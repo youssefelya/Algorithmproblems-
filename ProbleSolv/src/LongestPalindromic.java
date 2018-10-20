@@ -1,5 +1,7 @@
 import java.util.*;
 
+//Given a string find the longest palindrome substring
+//
 public class LongestPalindromic {
 	static String h="" ;
 	static String Max(String s,String p) {
@@ -8,32 +10,36 @@ public class LongestPalindromic {
 	
 	static String LongestPilndrom(String s) {
 		if(s.length()==1) {return s;}
-		if(s.length()==2) {if(s.charAt(0)==s.charAt(1)) {return s;}else {return ""+s.charAt(0);}  }
-		
-			else {
+		if(s.charAt(0)==s.charAt(s.length()-1)) {
+			
+		if(s.length()==2) {return s;  }
+		else {
 			char c1=s.charAt(0);
 			char c2=s.charAt(s.length()-1);
-			if(c1==c2) {
-		return c1+LongestPilndrom(s.substring(1,s.length()-1))+c2; } 
-			else { return Max(LongestPilndrom(s.substring(0,s.length()-1)),LongestPilndrom(s.substring(1,s.length())));
+			return c1+LongestPilndrom(s.substring(1,s.length()-1))+c2; }  }
+		
+		else { return Max(LongestPilndrom(s.substring(0,s.length()-1)),LongestPilndrom(s.substring(1,s.length())));
 					}	
 		}
-	}
 	
-	static String LongestPilndromdp(String s,int i,int f,String[][]m) {
+	
+	static String LongP(String s,int i,int f,String[][]m) {
 		if(i==f) {return ""+s.charAt(i);}
-		if(i+1==f) {if(s.charAt(i)==s.charAt(f)) {return s;}else {return ""+s.charAt(i);}  }
-		if(m[i][f]!=null) {return m[i][f];}
-		if(i<f) {
+		if(m[i][f]==null) {
+		 
 	if(s.charAt(i)==s.charAt(f)) {
-		  m[i][f] =s.charAt(i)+LongestPilndromdp(s,++i,--f,m)+s.charAt(f); 
-		  return  m[i][f];  }
+		if(i+1==f) {return s;}
+		  m[i][f] =s.charAt(i)+LongP(s,++i,--f,m)+s.charAt(f); 
+		//  return  s.charAt(i)+LongP(s,++i,--f,m)+s.charAt(f);
+		  }
 	else
-			m[i][f]= Max(LongestPilndromdp(s,++i,f,m),LongestPilndromdp(s,i,--f,m) ); 
-			return m[i][f];} 
-		return "";
-		
-	}
+	   {	 if(i+1==f) {return ""+s.charAt(i);}
+		m[i][f]= Max(LongP(s,++i,f,m),LongP(s,i,--f,m) ); 
+			//return Max(LongP(s,++i,f,m),LongP(s,i,--f,m) ); 
+			} }
+		return m[i][f];
+
+	} 
 
 			
 	 		
@@ -46,8 +52,8 @@ public class LongestPalindromic {
 	 
 
 	public static void main(String[] args) {
-		 String s = null,h;
-		 String[][]m = null;
+		 String s = null;
+		 String[][]m ;
 		 Scanner sc=new Scanner(System.in);
 		 int i=0;
 		 int y=10;
@@ -57,7 +63,7 @@ public class LongestPalindromic {
 			 int f=s.length()-1;
 		 
 			 m=new String[2*s.length()][2*s.length()];
-			System.out.println(LongestPilndromdp(s,i,f,m));
+			System.out.println(LongP(s,i,f,m));
 		
 			//System.out.println(s.substring(1,s.length())+"\t"+s.substring(0,s.length()-1));
 		 }
