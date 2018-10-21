@@ -52,6 +52,7 @@ public class LongestPalindromic {
 	 
 
 	public static void main(String[] args) {
+		String p;
 		 String s = null;
 		 String[][]m ;
 		 Scanner sc=new Scanner(System.in);
