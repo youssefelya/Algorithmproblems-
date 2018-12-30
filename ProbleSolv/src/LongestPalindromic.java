@@ -25,21 +25,20 @@ public class LongestPalindromic {
 	
 	static String LongP(String s,int i,int f,String[][]m) {
 		if(i==f) {return ""+s.charAt(i);}
-		if(m[i][f]==null) {
-		 
-	if(s.charAt(i)==s.charAt(f)) {
 		if(i+1==f) {return s;}
-		  m[i][f] =s.charAt(i)+LongP(s,++i,--f,m)+s.charAt(f); 
-		//  return  s.charAt(i)+LongP(s,++i,--f,m)+s.charAt(f);
+		if(m[i][f]!=null) {return m[i][f];  }
+		 
+	  if(s.charAt(i)==s.charAt(f)) {
+	  	  m[i][f] =s.charAt(i)+LongP(s,++i,--f,m)+s.charAt(f); 
+		  return  s.charAt(i)+LongP(s,++i,--f,m)+s.charAt(f);
 		  }
-	else
-	   {	 if(i+1==f) {return ""+s.charAt(i);}
-		m[i][f]= Max(LongP(s,++i,f,m),LongP(s,i,--f,m) ); 
-			//return Max(LongP(s,++i,f,m),LongP(s,i,--f,m) ); 
-			} }
-		return m[i][f];
+ 
+	else  {	      
+		  m[i][f]= Max(LongP(s,++i,f,m),LongP(s,i,--f,m) ); 
+			return Max(LongP(s,++i,f,m),LongP(s,i,--f,m) ); 
+			}  }
 
-	} 
+	 
 
 			
 	 		
@@ -52,19 +51,18 @@ public class LongestPalindromic {
 	 
 
 	public static void main(String[] args) {
-		String p;
+	 
 		 String s = null;
-		 String[][]m ;
 		 Scanner sc=new Scanner(System.in);
 		 int i=0;
 		 int y=10;
 		 while(true) {
 			 System.out.println("s == ");
 			 s=sc.nextLine();
-			 int f=s.length()-1;
-		 
-			 m=new String[2*s.length()][2*s.length()];
-			System.out.println(LongP(s,i,f,m));
+			 int f=s.length();
+			 String[][] m=new String[f+1][f+1];
+			// System.out.println("m 0 0 ===  "+m[0][0]);
+			System.out.println( LongP(s,i,f-1,m));
 		
 			//System.out.println(s.substring(1,s.length())+"\t"+s.substring(0,s.length()-1));
 		 }
