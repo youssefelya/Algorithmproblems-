@@ -22,7 +22,7 @@ public class LongestZigZagSubSequence {
 	static public int count=0;
 	static public int check(int[] arr,int init,int fin) {
 		if(arr.length==1) {return 1; }
-		if(arr.length==2) { }
+		if(arr.length==2) { };
 		if(arr[init]<arr[fin])
 	}
 
