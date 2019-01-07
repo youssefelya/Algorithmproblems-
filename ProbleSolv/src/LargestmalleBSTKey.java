@@ -35,11 +35,15 @@ class Solution {
     
     int findLargestSmallerKey(int num) {
     	if(this.root == null) {return -1; }
-    	if(root.key==num) {return root.key; }
-    	while(root!=null) {
-    		if(root.left.key>num) {root=root.right;   }
-    		root=root.left; }
-    	return root.parent.key;
+    	 Node roo1=root;
+         int key=-1;
+    	 int opt=10000 ;
+    	 while(root!=null) {
+    	 if(root.key==num) {return root.key; }
+    	if(root.key<num ){if(num-root.key<opt) {key=root.key; opt=num-root.key; }if(root.left!=null)  root=root.left;   }
+    	if(root.key>num){if(root.left.key>num) {return key; } if(root.left!=null) root=root.left;    }
+    	}
+    	return key;
     } 
     
     //  inserts a new node with the given number in the

@@ -37,7 +37,7 @@ public class SimilarExpressions {
 		for(int j=0;j<s.length();j++) {
 		
 		for(int i=0;i<s.length();i++) {
-			if(array[i]==-1){ index=i; continue;  }
+			//if(array[i]==-1){ index=i; continue;  }
 			if(array[i]==-2){  }
 		
 			if(array[i]==0) {sum1=sum1+array[i+1]; }

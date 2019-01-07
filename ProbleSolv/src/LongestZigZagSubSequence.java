@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /*
  * Given an array A of N positive integers. The task is to find the longest Zig-Zag subsequence problem such that 
  * all elements of this are alternating (Ai-1 < Ai > Ai+1).
@@ -20,14 +22,27 @@ Output:
 
 public class LongestZigZagSubSequence {
 	static public int count=0;
-	static public int check(int[] arr,int init,int fin) {
-		if(arr.length==1) {return 1; }
-		if(arr.length==2) { };
-		if(arr[init]<arr[fin])
-	}
+	static public int check(int[] arr,int i,int n) {
+		if(arr.length==1) {return 0; }
+		if(n<=i) {return 0; }
+		//if(arr.length==3){if(arr[0]<arr[1]&&arr[1]>arr[2]) {return 2; } else return 1;   }
+		 if(arr[i]<arr[arr.length/2]&&arr[n]<arr[arr.length/2]){return 2+check(arr ,++i,--n);   }
+		 return Math.max( check(arr ,i,--n), +check(arr ,++i,n));
+		 }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		 
+		Scanner sc=new Scanner(System.in);
+		
+		int T=sc.nextInt();
+		for(int i=0;i<T;i++) {
+			int N=sc.nextInt();
+			int[] arr =new int[N];
+			for(int j=0;j<N;j++) { arr[j]=sc.nextInt();   }
+			int in=0,n=arr.length-1;
+		System.out.println(check(arr,in,n)); 
+		
+		}
 
 	}
 
