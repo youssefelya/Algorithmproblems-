@@ -1,4 +1,4 @@
-import java.util.regex.Matcher;
+ 
 
 public class BasicRegexParser {
 	
@@ -17,7 +17,7 @@ public class BasicRegexParser {
 	  }
 
 	public static void main(String[] args) {
-		System.out.println(" "+Character.getNumericValue('z'-10));
+		System.out.println(" "+Character.getNumericValue('a'-10));
      	
 	}
 
