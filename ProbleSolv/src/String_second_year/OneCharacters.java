@@ -17,7 +17,8 @@ public class OneCharacters {
 
 	public static void main(String[] args) {
 	    String s="abcdefzer";
-	    System.out.println(" "+isUniqueChars(s));
+	    //System.out.println(" "+isUniqueChars(s));
+	    System.out.println(Integer.MAX_VALUE);
 		 
 
 	}
