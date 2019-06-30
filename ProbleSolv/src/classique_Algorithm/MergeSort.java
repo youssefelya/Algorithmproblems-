@@ -25,6 +25,7 @@ public class MergeSort {
 	
  
 	static public int[] mergeSorte(int[]arr,int firstIndex,int lastIndex) {
+		if(lastIndex<=firstIndex) {return arr;}
 		if(arr.length<=0) {return arr;}
 		if(arr.length==2) { return sortTwoElementArr(arr); }
 		int[]br1=mergeSorte(arr, firstIndex, lastIndex/2);
